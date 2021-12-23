@@ -22,6 +22,11 @@ func main() {
 	}
 	defer trace.Stop()
 
+	var mem runtime.MemStats
+	runtime.ReadMemStats(&mem)
+
+	PrintMemStats(&mem)
+
 	for i := 0; i < 10; i++ {
 		s := make([]byte, 50000000)
 		if s == nil {
@@ -29,14 +34,11 @@ func main() {
 		}
 	}
 
-	var mem runtime.MemStats
-	runtime.ReadMemStats(&mem)
-
 	// print mem stats with alloc, totalalloc, heapalloc, numgc
-	ReadMemStats(&mem)
+	PrintMemStats(&mem)
 }
 
-func ReadMemStats(mem *runtime.MemStats) {
+func PrintMemStats(mem *runtime.MemStats) {
 	fmt.Println("mem.Alloc:", mem.Alloc)
 	fmt.Println("mem.TotalAlloc:", mem.TotalAlloc)
 	fmt.Println("mem.HeapAlloc:", mem.HeapAlloc)

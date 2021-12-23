@@ -30,7 +30,7 @@ jobs:
     - name: Run testing
       run: go test -v
     - name: Run program
-      run: go run start.go
+      run: GODEBUG=gctrace=1 go run start.go
     - name: notification
       uses: xinthink/action-telegram@v1.1
       with:

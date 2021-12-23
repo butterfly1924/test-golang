@@ -36,7 +36,6 @@ jobs:
     - name: Run program
       run: go run start.go
     - name: notification
-      if: cancelled() == false
       uses: xinthink/action-telegram@v1.1
       with:
         botToken: ${{ secrets.BOTTOKEN }}

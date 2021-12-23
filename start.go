@@ -5,6 +5,7 @@ import (
 	"os"
 	"runtime"
 	"runtime/trace"
+	"time"
 )
 
 func main() {
@@ -36,6 +37,16 @@ func main() {
 
 	// print mem stats with alloc, totalalloc, heapalloc, numgc
 	PrintMemStats(mem)
+
+	for i := 0; i < 10; i++ {
+		s := make([]byte, 100000000)
+		if s == nil {
+			fmt.Println("Operation failed!")
+		}
+		time.Sleep(time.Millisecond)
+	}
+	PrintMemStats(mem)
+
 }
 
 func PrintMemStats(mem runtime.MemStats) {

@@ -23,7 +23,7 @@ func main() {
 	defer trace.Stop()
 
 	var mem runtime.MemStats
-	runtime.ReadMemStats(mem)
+	runtime.ReadMemStats(&mem)
 
 	PrintMemStats(mem)
 

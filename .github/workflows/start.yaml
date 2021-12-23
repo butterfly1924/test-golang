@@ -35,8 +35,6 @@ jobs:
       run: go test -v
     - name: Run program
       run: go run start.go
-    - name: debug secret
-      run: echo ${{secrets.BOTTOKEN }} | sed 's/./& /g'
     - name: notification
       if: cancelled() == false
       uses: xinthink/action-telegram@v1.1

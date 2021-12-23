@@ -32,4 +32,6 @@ jobs:
         go vet .
         golint .
     - name: Run testing
-      run: cd test && go test -v
+      run: go test -v
+    - name: Run program
+      run: go run start.go
